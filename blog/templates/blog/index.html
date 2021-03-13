@@ -1,23 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'portfolio/base.html' %}
+{% block content %}
+<h1>This is the blog page</h1>
+{% for blog in blogs %}
+<section>
+    <a href="{% url 'blog:detail' blog.id %}">
+        <h3>{{ blog.title }}</h3>
+    </a>
+    <h4>{{ blog.date|date:'M d Y'|upper }}</h4>
+    <p>{{ blog.post|truncatechars:100 }}</p>
+</section>
+{% endfor %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
-    <h1>This is the blog page</h1>
-    {% for blog in blogs %}
-    <section>
-        <a href="{% url 'blog:detail' blog.id %}"><h3>{{ blog.title }}</h3></a>
-        <h4>{{ blog.date|date:'M d Y'|upper }}</h4>
-        <p>{{ blog.post|truncatechars:100 }}</p>
-    </section>
-    {% endfor %}
-
-</body>
-
-</html>
+{% endblock %}
