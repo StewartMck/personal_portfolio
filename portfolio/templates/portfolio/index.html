@@ -6,7 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+   
 <body>
+
+    {% load static %}
+    <img src="{% static 'portfolio/under_construction.jpg' %}">
+
     <h1>This is the Home Page</h1>
     {% for p in projects %}
         <section>
@@ -17,8 +22,8 @@
             <a href="{{ p.url }}">Link</a>
             {% endif %}
         </section>
-
     {% endfor %}
+  
 
 </body>
 </html>
